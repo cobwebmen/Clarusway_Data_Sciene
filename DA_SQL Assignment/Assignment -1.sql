@@ -27,9 +27,16 @@ group by Receiver_ID
 
 --Full (outer) join debits and credits tables on account id, taking net change as difference between credits and debits, coercing nulls to zeros with coalesce()
 
-SELECT COALESCE(S.Sender_ID, R.Receiver_Id) AS Acount_ID ,
-(COALESCE(R.Receiver,0)-COALESCE(S.Sender,0)) AS Net_Change
-
-FROM  (select Sender_ID, SUM (Amount) As Sender from Transactions group by Sender_ID) AS S
-FULL OUTER JOIN  (select Receiver_ID, SUM (Amount) As Receiver from Transactions group by Receiver_ID) AS R On S.Sender_ID=R.Receiver_ID
-Order BY Net_Change DESC;
+SELECT	*
+FROM	(
+		SELECT	sender_id, SUM(amount) AS send_amount
+		FROM	assignment1
+		GROUP BY sender_id
+		) S
+FULL OUTER JOIN	
+		(
+		SELECT	receiver_id, SUM(amount) AS receive_amount
+		FROM	assignment1
+		GROUP BY receiver_id
+		) R
+ON		S.Sender_id = R.receiver_id
