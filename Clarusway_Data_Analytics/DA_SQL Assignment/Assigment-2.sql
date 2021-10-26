@@ -1,4 +1,3 @@
-/*
 1. Conversion Rate
 Below you see a table of the actions of customers visiting the website by clicking on two different types of advertisements given by an E-Commerce company. 
 Write a query to return the conversion and cancellation rates for each Advertisement type.
@@ -14,15 +13,10 @@ Visitor_ID	Adv_Type	Action
 8	B	Order
 9	B	Review
 10	A	Review
-
-
 Desired_Output:
-
 Adv_Type	Conversion_Rate
 A	0.33
 B	0.25
-
-
 */
 -- 1. a.	Create above table (Actions) and insert values
 
