@@ -1,0 +1,92 @@
+---- return the first name and e-mail of females that work in the tools department having salary greater than 110,00
+Select *
+From employees
+
+
+Select first_name,email,gender,salary
+From employees
+Where salary > 110000 
+AND department = 'Tools' 
+AND gender = 'F'
+
+---- return the first_name and hire_date of those employees who earn more
+-----than 165000 as well as those employees that work in the sport department and also happen to men
+
+Select first_name, hire_date
+From employees
+Where salary > 165000 
+OR (department = 'sport'
+AND gender = 'M')
+
+
+------return the first_name and hire_date of those employees who
+-----were hired during Jan 1st 2002 and Jan 1 st 2004
+
+Select first_name, hire_date
+From employees
+Where hire_date 
+Between '2002-01-01' AND '2004-01-01'; 
+
+-----return the male employees who work in thw automotive dept and 
+---- earn more than 40k and less than 100k as well as females that work 
+----in the toys department
+
+Select *
+From employees
+Where salary > 40000 
+AND salary<110000
+AND Gender = 'M'
+AND Department = 'Auto'
+		OR (Gender = 'F'
+		AND department = 'Toys');
+		
+		
+-----  
+---Write a query to display the names of those students that are between the ages of 18 and 20
+
+Select student_name
+From students
+Where age between 18 and 20
+
+----Write a query to display all of those students that contain the letters "ch" in their name or their name ends with the letters "nd".
+
+SELECT *
+FROM students
+WHERE student_name like '%ch%'
+OR student_name like '%nd';
+
+---Write a query to display the name of those students that have the letters "ae" or "ph" in their name and are NOT 19 years old.
+
+SELECT student_name
+FROM students
+WHERE (student_name like '%ae%' OR student_name like '%ph%')
+AND age != 19;
+
+--Write a query that lists the names of students sorted by their age from largest to smallest.
+
+SELECT student_name, age
+From students
+Order By age DESC
+
+--Write a query that displays the names and ages of the top 4 oldest students.
+
+
+SELECT student_name, age
+From students
+Order By age DESC
+LIMIT 4
+
+---Write a query that returns students based on the following criteria:
+
+--The student must not be older than age 20 if their student_no is either between 3 and 5 or their student_no is 7. 
+--Your query should also return students older than age 20 but in that case they must have a student_no that is at least 4.
+
+SELECT *
+From students
+WHERE AGE <= 20 
+AND ( student_no BETWEEN 3 AND 5 OR student_no = 7 )
+OR (AGE > 20 AND student_no >= 4); 
+
+
+
+
