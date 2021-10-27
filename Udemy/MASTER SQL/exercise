@@ -141,3 +141,34 @@ SELECT MIN(hire_date)
 FROM professors
 
 ------------------
+
+Select DISTINCT first_name, count(*)
+From employees
+Group By first_name
+Having count(*)>2
+
+---- e-mail domain
+
+Select substring(email, position('@' IN email)+1) as email_domain, count(*)
+From employees
+where email IS NOT NULL 
+group by substring(email, position('@' IN email)+1)
+order by count(*) DESC
+-----
+--- gender max,min,avg salary and region ID
+SELECT gender, region_id, 
+			MIN(salary) min_salary, 
+			MAX(salary) max_salary,
+			round(AVG(salary)) avg_salary
+FROM employees
+GROUP BY gender, region_id
+ORDER BY gender desc, region_id
+
+---- SUBQUERY
+SELECT e.department
+FROM employees E, departments D
+
+
+
+
+
