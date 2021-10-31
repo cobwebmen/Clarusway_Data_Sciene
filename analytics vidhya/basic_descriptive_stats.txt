@@ -1,0 +1,95 @@
+Pandas has functions that provide functionality for doing Basic descriptive Statistics on a dataset imported as dataframe. Let us have a look at few examples with code:
+
+
+Import Pandas Module
+import pandas as pd
+
+
+Create dataframe
+data = {'name': ['Kunal', 'Ankit', 'Purva', 'Pranav', 'Sunil'], 
+        'age': [42, 52, 36, 24, 73], 
+        'TestScore_1': [4, 24, 31, 2, 3],
+        'TestScore_2': [25, 94, 57, 62, 70]}
+df = pd.DataFrame(data, columns = ['name', 'age', 'TestScore_1', 'TestScore_2'])
+df
+
+name	age	TestScore_1	TestScore_2
+0	Kunal	42	4	25
+1	Ankit	52	24	94
+2	Purva	36	31	57
+3	Pranav	24	2	62
+4	Sunil	73	3	70
+
+
+The sum of all the ages
+df['age'].sum()
+227
+
+Mean TestScore_1
+df['TestScore_1'].mean()
+12.800000000000001
+Cumulative sum of TestScore_1s, moving from the rows from the top
+df['TestScore_1'].cumsum()
+0     4
+1    28
+2    59
+3    61
+4    64
+
+Summary statistics on TestScore_1
+df['TestScore_1'].describe()
+count     5.000000
+mean     12.800000
+std      13.663821
+min       2.000000
+25%       3.000000
+50%       4.000000
+75%      24.000000
+max      31.000000
+
+Count the number of non-NA values
+df['TestScore_1'].count()
+5
+Minimum value of TestScore_1
+df['TestScore_1'].min()
+2
+Maximum value of TestScore_1
+df['TestScore_1'].max()
+31
+Median value of TestScore_1
+df['TestScore_1'].median()
+4.0
+Sample variance of TestScore_1 values
+df['TestScore_1'].var()
+186.69999999999999
+Sample standard deviation of TestScore_1 values
+df['TestScore_1'].std()
+13.663820841916802
+
+
+Skewness of preTestScore values
+df['TestScore_1'].skew()
+0.74334524573267591
+
+
+Kurtosis of TestScore_1 values
+df['TestScore_1'].kurt()
+-2.4673543738411525
+
+
+Correlation Matrix Of Values
+df.corr()
+
+age	TestScore_1	TestScore_2
+age	1.000000	-0.105651	0.328852
+TestScore_1	-0.105651	1.000000	0.378039
+TestScore_1	0.328852	0.378039	1.000000
+
+
+Covariance Matrix Of Values
+df.cov()
+
+age	TestScore_1	TestScore_2
+age	340.80	-26.65	151.20
+TestScore_1	-26.65	186.70	128.65
+TestScore_2	151.20	128.65	620.30
